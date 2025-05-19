@@ -1,0 +1,11 @@
+[package]
+name = "tea_subscription_rs"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rocket = { version = "0.5.1", features = ["json"] }
+sea-orm = { version = "1.1.11", features = ["sqlx-postgres", "runtime-tokio-native-tls", "macros", "mock", "debug-print"] }
+
+[lints.clippy]
+pedantic = "warn"
