@@ -1,6 +1,6 @@
 use sea_orm_migration::{
     prelude::*,
-    schema::{integer, pk_auto, string, time},
+    schema::{boolean, integer, pk_auto},
 };
 
 use crate::{
@@ -20,8 +20,8 @@ impl MigrationTrait for Migration {
                     .table(CustomerSubscription::Table)
                     .if_not_exists()
                     .col(pk_auto(CustomerSubscription::Id))
-                    .col(string(CustomerSubscription::Status))
-                    .col(time(CustomerSubscription::Frequency))
+                    .col(boolean(CustomerSubscription::Active))
+                    .col(integer(CustomerSubscription::Frequency))
                     .col(integer(CustomerSubscription::CustomerId))
                     .col(integer(CustomerSubscription::SubscriptionId))
                     .foreign_key(
@@ -62,7 +62,7 @@ impl MigrationTrait for Migration {
 enum CustomerSubscription {
     Table,
     Id,
-    Status,
+    Active,
     Frequency,
     CustomerId,
     SubscriptionId,
