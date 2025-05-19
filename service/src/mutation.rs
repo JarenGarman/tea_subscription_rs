@@ -8,7 +8,7 @@ impl Mutation {
     pub async fn update_customer_subscription_by_id(
         db: &DbConn,
         id: i32,
-        form_data: customer_subscription::Model,
+        active: bool,
     ) -> Result<customer_subscription::Model, DbErr> {
         let mut customer_subscription: customer_subscription::ActiveModel =
             CustomerSubscription::find_by_id(id)
@@ -19,7 +19,7 @@ impl Mutation {
                 ))
                 .map(Into::into)?;
 
-        customer_subscription.active = Set(form_data.active.to_owned());
+        customer_subscription.active = Set(active);
 
         customer_subscription::ActiveModel::update(customer_subscription, db).await
     }

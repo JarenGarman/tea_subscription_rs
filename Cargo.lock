@@ -3089,6 +3089,7 @@ dependencies = [
  "migration",
  "rocket",
  "sea-orm",
+ "serde",
  "service",
 ]
 

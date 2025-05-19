@@ -9,7 +9,7 @@ pub struct Model {
     #[sea_orm(primary_key)]
     pub id: i32,
     pub active: bool,
-    pub frequency: Time,
+    pub frequency: i32,
     pub customer_id: i32,
     pub subscription_id: i32,
 }
