@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [workspace]
-members = [".", "migration"]
+members = [".", "migration", "entity"]
 
 [dependencies]
 rocket = { version = "0.5.1", features = ["json"] }
@@ -16,6 +16,7 @@ sea-orm = { version = "1.1.11", features = [
   "debug-print",
 ] }
 migration = { path = "migration" }
+entity = { path = "entity" }
 
 [lints.clippy]
 pedantic = "warn"

@@ -1,3 +1,6 @@
+use migration::{Migrator, MigratorTrait};
+
 fn main() {
-    println!("Hello, world!");
+    let connection = sea_orm::Database::connect(&database_url).await?;
+    Migrator::up(&connection, None).await?;
 }
