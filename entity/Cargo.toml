@@ -1,0 +1,17 @@
+[package]
+name = "entity"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[lib]
+name = "entity"
+path = "src/lib.rs"
+
+[dependencies]
+rocket = { version = "0.5.1", features = ["json"] }
+sea-orm = { version = "1.1.11" }
+serde = "1.0.219"
+
+[lints.clippy]
+pedantic = "warn"
