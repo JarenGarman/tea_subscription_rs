@@ -17,6 +17,7 @@ sea-orm = { version = "1.1.11", features = [
 ] }
 migration = { path = "migration" }
 entity = { path = "entity" }
+dotenvy = "0.15.7"
 
 [lints.clippy]
 pedantic = "warn"
