@@ -14,7 +14,11 @@ async fn main() -> Result<(), Box<rocket::Error>> {
         .await
         .expect("Failed to run migrations");
 
-    let _rocket = rocket::build().manage(db).mount("/", routes![]);
+    let _rocket = rocket::build()
+        .manage(db)
+        .mount("/", routes![])
+        .launch()
+        .await?;
 
     Ok(())
 }
