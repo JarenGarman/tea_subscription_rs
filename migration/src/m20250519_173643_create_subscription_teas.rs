@@ -1,4 +1,7 @@
-use sea_orm_migration::{prelude::*, schema::pk_auto};
+use sea_orm_migration::{
+    prelude::*,
+    schema::{integer, pk_auto},
+};
 
 use crate::{
     m20250519_170202_create_teas::Tea, m20250519_172607_create_subscriptions::Subscription,
@@ -16,6 +19,8 @@ impl MigrationTrait for Migration {
                     .table(SubscriptionTea::Table)
                     .if_not_exists()
                     .col(pk_auto(SubscriptionTea::Id))
+                    .col(integer(SubscriptionTea::SubscriptionId))
+                    .col(integer(SubscriptionTea::TeaId))
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-subscription_tea-subscription_id")

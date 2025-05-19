@@ -1,6 +1,6 @@
 use sea_orm_migration::{
     prelude::*,
-    schema::{pk_auto, string, time},
+    schema::{integer, pk_auto, string, time},
 };
 
 use crate::{
@@ -22,6 +22,8 @@ impl MigrationTrait for Migration {
                     .col(pk_auto(CustomerSubscription::Id))
                     .col(string(CustomerSubscription::Status))
                     .col(time(CustomerSubscription::Frequency))
+                    .col(integer(CustomerSubscription::CustomerId))
+                    .col(integer(CustomerSubscription::SubscriptionId))
                     .foreign_key(
                         ForeignKey::create()
                             .name("fk-customer_subscription-customer_id")
