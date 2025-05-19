@@ -24,21 +24,23 @@ impl MigrationTrait for Migration {
                     .col(time(CustomerSubscription::Frequency))
                     .foreign_key(
                         ForeignKey::create()
-                            .from(Customer::Table, Customer::Id)
-                            .to(
+                            .name("fk-customer_subscription-customer_id")
+                            .from(
                                 CustomerSubscription::Table,
                                 CustomerSubscription::CustomerId,
                             )
+                            .to(Customer::Table, Customer::Id)
                             .on_delete(ForeignKeyAction::Cascade)
                             .on_update(ForeignKeyAction::Cascade),
                     )
                     .foreign_key(
                         ForeignKey::create()
-                            .from(Subscription::Table, Subscription::Id)
-                            .to(
+                            .name("fk-customer_subscription-subscription_id")
+                            .from(
                                 CustomerSubscription::Table,
                                 CustomerSubscription::SubscriptionId,
                             )
+                            .to(Subscription::Table, Subscription::Id)
                             .on_delete(ForeignKeyAction::Cascade)
                             .on_update(ForeignKeyAction::Cascade),
                     )

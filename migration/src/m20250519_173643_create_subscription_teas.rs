@@ -18,15 +18,17 @@ impl MigrationTrait for Migration {
                     .col(pk_auto(SubscriptionTea::Id))
                     .foreign_key(
                         ForeignKey::create()
-                            .from(Subscription::Table, Subscription::Id)
-                            .to(SubscriptionTea::Table, SubscriptionTea::SubscriptionId)
+                            .name("fk-subscription_tea-subscription_id")
+                            .from(SubscriptionTea::Table, SubscriptionTea::SubscriptionId)
+                            .to(Subscription::Table, Subscription::Id)
                             .on_delete(ForeignKeyAction::Cascade)
                             .on_update(ForeignKeyAction::Cascade),
                     )
                     .foreign_key(
                         ForeignKey::create()
-                            .from(Tea::Table, Tea::Id)
-                            .to(SubscriptionTea::Table, SubscriptionTea::TeaId)
+                            .name("fk-subscription_tea-tea_id")
+                            .from(SubscriptionTea::Table, SubscriptionTea::TeaId)
+                            .to(Tea::Table, Tea::Id)
                             .on_delete(ForeignKeyAction::Cascade)
                             .on_update(ForeignKeyAction::Cascade),
                     )
